@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Efe'nin Affetme Paneli</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.imgur.com/YkO7yQ2.jpg'); /* Kalpli arka plan */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    h1 {
+      color: #ff0066;
+      margin-top: 50px;
+      text-shadow: 2px 2px white;
+    }
+
+    #buttons {
+      margin-top: 100px;
+      position: relative;
+      height: 300px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #affediyorum {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #efeGit {
+      background-color: #ff3333;
+      color: white;
+      position: absolute;
+    }
+
+    #ekButon button {
+      background-color: #6600cc;
+      color: white;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>kabul ettin aşkım? </h1>
+
+  <div id="buttons">
+    <button id="affediyorum">Tamam lan affettim </button>
+    <button id="efeGit">Affetmiyorum Efe git</button>
+  </div>
+
+  <div id="ekButon"></div>
+  <audio id="kissSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+  <audio id="fartSound" src="https://www.fesliyanstudios.com/play-mp3/6677" preload="auto"></audio>
+
+  <script>
+    const affediyorumBtn = document.getElementById("affediyorum");
+    const efeGitBtn = document.getElementById("efeGit");
+    const ekButonDiv = document.getElementById("ekButon");
+    const kissSound = document.getElementById("kissSound");
+    const fartSound = document.getElementById("fartSound");
+
+    let clickCount = 0;
+
+    affediyorumBtn.addEventListener("click", () => {
+      kissSound.play();
+      clickCount++;
+
+      const yeniBtn = document.createElement("button");
+      yeniBtn.textContent = clickCount >= 5 ? "Tamam tamam affettim yeter! 🤝" : "Barışı sağladık komutanım 💋";
+      yeniBtn.style.fontSize = "20px";
+      yeniBtn.style.padding = "12px 20px";
+      ekButonDiv.innerHTML = "";
+      ekButonDiv.appendChild(yeniBtn);
+    });
+
+    efeGitBtn.addEventListener("mouseover", () => {
+      fartSound.play();
+      const maxX = window.innerWidth - efeGitBtn.offsetWidth;
+      const maxY = window.innerHeight - efeGitBtn.offsetHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      efeGitBtn.style.left = `${randomX}px`;
+      efeGitBtn.style.top = `${randomY}px`;
+
+      const messages = [
+        "tıklasana hadi",
+        "tıklamaya hakkın yok",
+        "öperim hadi bassana",
+        "basamazsın 🙄",
+        "öptümbb 💨"
+      ];
+
+      efeGitBtn.textContent = messages[Math.floor(Math.random() * messages.length)];
+    });
+  </script>
+
+</body>
+</html>
